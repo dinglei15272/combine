@@ -13,7 +13,7 @@
     <!-- 加载属性文件 -->
     <context:property-placeholder location="classpath*:props/*.properties"/>
     <!-- 导入数据库访问的配置文件 -->
-    <import resource="classpath:applicationContext-mapper.xml"/>
+    <import resource="classpath:applicationContext-mappers.xml"/>
     <!-- 导入Redis访问的配置文件 短信验证码需要存储到Redis(过期时间) -->
     <import resource="classpath:applicationContext-redis.xml"/>
 

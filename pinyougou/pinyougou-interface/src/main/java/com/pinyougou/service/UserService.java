@@ -36,4 +36,10 @@ public interface UserService {
 
 	/** 检验短信验证码 */
 	boolean checkSmsCode(String phone, String code);
+
+    void setSafe(User user);
+
+    void updatePhone(String phone,String username);
+
+    String findPhone(String username);
 }

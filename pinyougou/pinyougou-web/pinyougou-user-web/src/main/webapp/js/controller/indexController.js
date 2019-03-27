@@ -3,6 +3,8 @@ app.controller('indexController', function($scope, baseService){
 
     // 获取登录用户名
     $scope.showName = function () {
+
+        $scope.redirectUrl = window.encodeURIComponent(location.href);
         baseService.sendGet("/user/showName").then(function (response) {
             // 获取响应数据
             $scope.loginName = response.data.loginName;

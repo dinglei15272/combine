@@ -1,8 +1,9 @@
 /** 定义控制器层 */
-app.controller('userController', function($scope, $timeout, baseService){
+app.controller('userController', function($scope,$controller, $timeout, baseService){
 
+    $controller('indexController',{$scope:$scope});
     // 定义json对象
-    $scope.user = {}
+    $scope.user = {};
 
     // 用户注册
     $scope.save = function () {
@@ -74,6 +75,4 @@ app.controller('userController', function($scope, $timeout, baseService){
             $scope.flag = false;
         }
     };
-
-
 });

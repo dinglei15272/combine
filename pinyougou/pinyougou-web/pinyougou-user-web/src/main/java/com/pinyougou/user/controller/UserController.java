@@ -5,6 +5,8 @@ import com.pinyougou.pojo.User;
 import com.pinyougou.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 用户控制器
  *
@@ -42,6 +44,44 @@ public class UserController {
             return userService.sendSmsCode(phone);
         }catch (Exception ex){
             ex.printStackTrace();
+        }
+        return false;
+    }
+    @PostMapping("/setSafe")
+    public boolean setSafe(@RequestBody User user, HttpServletRequest request) {
+        try{
+            String name = request.getRemoteUser();
+            user.setUsername(name);
+            userService.setSafe(user);
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @PostMapping("/check")
+    public boolean check(String phone,String code,String smsCode,HttpServletRequest request){
+
+        try{
+            String oldCode = (String) request.getSession().getAttribute(VerifyController.VERIFY_CODE);
+            if (oldCode.equalsIgnoreCase(code)) {
+                boolean b = userService.checkSmsCode(phone, smsCode);
+                return b;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+    @PostMapping("/savePhone")
+    public boolean savePhone(String phone,HttpServletRequest request) {
+
+        try {
+            String username = request.getRemoteUser();
+            userService.updatePhone(phone,username);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }

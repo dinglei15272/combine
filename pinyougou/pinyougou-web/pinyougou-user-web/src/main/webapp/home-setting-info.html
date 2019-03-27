@@ -4,14 +4,22 @@
     <meta charset="UTF-8"/>
     <title>设置-个人信息</title>
     <link rel="icon" href="/assets/img/favicon.ico"/>
-
     <link rel="stylesheet" type="text/css" href="/css/webbase.css"/>
-    
 	<link rel="stylesheet" type="text/css" href="/css/pages-seckillOrder.css"/>
+	<script src="plugins/angularjs/angular.min.js"></script>
+	<script src="js/base.js"></script>
+	<script src="js/service/baseService.js"></script>
+	<script src="js/controller/indexController.js"></script>
+	<script src="js/controller/settingController.js"></script>
+	<script src="plugins/calendar.js"></script>
+	<script src="plugins/WdatePicker.js"></script>
+	<script src="plugins/lang/zh-cn.js"></script>
+	<link rel="stylesheet" href="plugins/skin/WdatePicker.css">
 
 </head>
 
-<body>
+<body ng-app="pinyougou" ng-controller="settingController"
+	  ng-init="showName();findProvinces();">
     <!-- 头部栏位 -->
     <!--页面顶部-->
 <div id="nav-bottom">
@@ -21,8 +29,8 @@
 			<div class="py-container">
 				<div class="shortcut">
 					<ul class="fl">
-						<li class="f-item">品优购欢迎您！</li>
-						<li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
+						<li class="f-item">{{loginName}},品优购欢迎您！</li>
+						<a href="http://sso.pinyougou.com/logout?service={{redirectUrl}}"></a>
 					</ul>
 					<ul class="fr">
 						<li class="f-item">我的订单</li>
@@ -178,7 +186,7 @@ $(function(){
                     <div class="person-info">
                         <div class="person-photo"><img src="img/_/photo.png" alt=""></div>
                         <div class="person-account">
-                            <span class="name">Michelle</span>
+                            <span class="name">{{loginName}}</span>
                             <span class="safe">账户安全</span>
                         </div>
                         <div class="clearfix"></div>
@@ -221,42 +229,55 @@ $(function(){
                                     <div class="control-group">
                                         <label for="inputName" class="control-label">昵称：</label>
                                         <div class="controls">
-                                            <input type="text" id="inputName" name="email" placeholder="昵称">
+                                            <input type="text" id="inputName" name="email"
+												   ng-model="user.nickName"
+												   placeholder="昵称">
                                         </div>
                                     </div>
                                     <div class="control-group">
                                         <label for="inputGender" class="control-label">性别：</label>
                                         <div class="controls">
-                                            <label data-toggle="radio" class="radio-pretty inline">
-                                            <input type="radio" name="gender" value="1"><span>男</span>
+                                            <input type="radio" name="gender" value="1" ng-model="user.sex"><span>男</span>
                                         </label>
-                                            <label data-toggle="radio" class="radio-pretty inline">
-                                            <input type="radio" name="gender" value="2"><span>女</span>
+                                            <input type="radio" name="gender" value="2" ng-model="user.sex"><span>女</span>
                                         </label>
                                         </div>
                                     </div>
                                     <div class="control-group">
-                                        <label for="inputPassword" class="control-label">生日：</label>
+                                        <label class="control-label">生日：</label>
                                         <div class="controls">
-                                            <select id="select_year2" rel="1990"></select>年
-                                            <select id="select_month2" rel="4"></select>月
-                                            <select id="select_day2" rel="3"></select>日
+                                            <!--<select id="select_year2" rel="1990"></select>年-->
+											<input id="select_year2"  type="text" ng-model="user.birth"/>
+											<img onclick="WdatePicker({el:'select_year2'})"
+												 src="plugins/skin/datePicker.gif" width="16" height="22" align="absmiddle">年
                                         </div>
-                                    </div>
+									</div>
 
 
                                     <div class="control-group">
-                                        <label for="inputPassword" class="control-label">所在地：</label>
+                                        <label class="control-label">所在地：</label>
                                         <div class="controls">
-                                            <div data-toggle="distpicker">
+                                            <div>
                                                 <div class="form-group area">
-                                                    <select class="form-control" id="province1"></select>
+                                                    <select ng-model="provinces.provinceId"
+														ng-options="p.id as p.province for p in provincesList"
+															class="form-control">
+														<option value="">=====省=====</option>
+													</select>
                                                 </div>
                                                 <div class="form-group area">
-                                                    <select class="form-control" id="city1"></select>
+                                                    <select ng-model="cities.cityId"
+														ng-options="c.id as c.city for c in citiesList"
+															class="form-control">
+														<option value="">=====市=====</option>
+													</select>
                                                 </div>
                                                 <div class="form-group area">
-                                                    <select class="form-control" id="district1"></select>
+                                                    <select ng-model="areas.areaId"
+															ng-options="a.id as a.area for a in areasList"
+															class="form-control">
+														<option value="">=====区=====</option>
+													</select>
                                                 </div>
                                             </div>
                                         </div>
@@ -277,7 +298,7 @@ $(function(){
                                     <div class="control-group">
                                         <label for="sanwei" class="control-label"></label>
                                         <div class="controls">
-                                            <button type="submit" class="sui-btn btn-primary">立即注册</button>
+                                            <button type="submit" class="sui-btn btn-primary" ng-click="saveInfo();">立即注册</button>
                                         </div>
                                     </div>
                                 </form>

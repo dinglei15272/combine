@@ -28,4 +28,5 @@ public class LoginController {
         data.put("loginName", loginName);
         return data;
     }
+
 }
