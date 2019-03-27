@@ -1,8 +1,9 @@
 package com.pinyougou.mapper;
 
-import tk.mybatis.mapper.common.Mapper;
-
 import com.pinyougou.pojo.OrderItem;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import tk.mybatis.mapper.common.Mapper;
 
 /**
  * OrderItemMapper 数据访问接口
@@ -10,7 +11,6 @@ import com.pinyougou.pojo.OrderItem;
  * @version 1.0
  */
 public interface OrderItemMapper extends Mapper<OrderItem>{
-
-
-
+    @Select("select * from tb_order_item WHERE order_id = #{orderId} ")
+    OrderItem findAll(@Param("orderId") Long orderId);
 }
