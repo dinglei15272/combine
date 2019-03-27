@@ -59,16 +59,14 @@ app.controller('settinginfoController', function ($scope, $controller, baseServi
         }
     });
 
-    $scope.cook = function () {
-        alert($scope.entity.address);
-    };
     // 图片上传
     $scope.upload = function () {
         baseService.uploadFile().then(function (response) {
             // 获取响应数据: {status : 200|500, url : ''}
             if (response.data.status == 200) {
                 $scope.entity.headPic = response.data.url;
-                alert("上传成功")
+                alert("上传成功");
+                $scope.entity.ok="上传成功!!";
             }
         });
     };
