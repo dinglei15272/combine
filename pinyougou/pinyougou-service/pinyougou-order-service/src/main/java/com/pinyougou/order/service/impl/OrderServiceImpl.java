@@ -3,7 +3,9 @@ package com.pinyougou.order.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.pinyougou.cart.Cart;
 import com.pinyougou.common.util.IdWorker;
-import com.pinyougou.mapper.*;
+import com.pinyougou.mapper.OrderItemMapper;
+import com.pinyougou.mapper.OrderMapper;
+import com.pinyougou.mapper.PayLogMapper;
 import com.pinyougou.pojo.Order;
 import com.pinyougou.pojo.OrderItem;
 import com.pinyougou.pojo.PayLog;
@@ -14,8 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 订单服务接口实现类
@@ -38,10 +40,6 @@ public class OrderServiceImpl implements OrderService {
     private PayLogMapper payLogMapper;
     @Autowired
     private IdWorker idWorker;
-    @Autowired
-    private SellerMapper sellerMapper;
-    @Autowired
-    private UserMapper userMapper;
 
     @Override
     public void save(Order order) {
@@ -165,60 +163,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order findOne(Serializable id) {
-        return orderMapper.selectByPrimaryKey(id);
+        return null;
     }
 
     @Override
-    public List<Order> selectAll() {
-        return orderMapper.selectAll();
+    public List<Order> findAll() {
+        return null;
     }
 
     @Override
-    public   Map findByPage(Map<String, Object> params,String userName) {
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-//            String userName = (String) params.get("userName");
-            Integer page = (Integer) params.get("page");
-            Integer rows = (Integer) params.get("rows");
-            page = (page - 1) * rows;
-            Map<Object,Object> data = new HashMap<>();
-            List<Object> list = new ArrayList<>();
-            List<Order> orderList  = orderMapper.findAll(page,rows,userName);
-            if (orderList !=null && orderList.size() > 0){
-                for (Order order : orderList) {
-                    OrderItem orderItem = orderItemMapper.findAll(order.getOrderId());
-                    if (orderItem != null){
-                        Map<String,Object> map = new HashMap<>();
-                        map.put("goodsId",order.getSellerId());
-                        map.put("status",order.getStatus());
-                        map.put("sellerId",sellerMapper.selectById(order.getSellerId()));
-                        map.put("picPath",orderItem.getPicPath());
-                        map.put("num",orderItem.getNum());
-                        map.put("price",orderItem.getPrice());
-                        map.put("totalFee",orderItem.getTotalFee());
-                        map.put("title",orderItem.getTitle());
-                        Date time = order.getUpdateTime();
-                        System.out.println(sdf.format(time));
-                        map.put("updateTime",sdf.format(time));
-                        map.put("id",orderItem.getId());
-                        list.add(map);
-                    }else {
-                        data.put("commodityIsNull",true);
-                    }
-                }
-                // 总记录数
-                data.put("total", list.size());
-                double content =(double)  list.size() / rows;
-                // 总页数
-                data.put("totalPages",Math.ceil(content));
-                data.put("orders",list);
-            }else {
-                data.put("mistake",true);
-            }
-            return data;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public List<Order> findByPage(Order order, int page, int rows) {
+        return null;
     }
 
     /** 根据登录用户名，从Redis数据库获取支付日志对象 */
@@ -257,6 +212,7 @@ public class OrderServiceImpl implements OrderService {
                 // 修改
                 orderMapper.updateByPrimaryKeySelective(order);
             }
+
             // 3. 删除支付日志
             redisTemplate.delete("payLog_" + payLog.getUserId());
         }catch (Exception ex){
