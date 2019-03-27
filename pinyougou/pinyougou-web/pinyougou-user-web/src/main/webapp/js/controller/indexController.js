@@ -14,17 +14,15 @@ app.controller('indexController', function($scope, baseService,$http){
 
     // 商品搜索的方法
     $scope.findByPage = function () {
-        // var userName = $scope.loginName;
-
         // 发送异步请求
         baseService.sendPost("/order/findByPage" , $scope.searchParam).then(function(response){
             // 获取响应数据 response.data: {total: 100, rows:[{},{}]} rows:List<SolrItem>
             $scope.resultMap = response.data;
+            $scope.to
             // 调用初始化页码的方法
             $scope.initPageNums();
         });
     };
-
 
     /** 添加SKU商品到购物车 */
     $scope.payment = function(id,num){
