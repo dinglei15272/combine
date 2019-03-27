@@ -4,131 +4,8 @@
     <meta charset="UTF-8"/>
     <title>设置-个人信息</title>
     <link rel="icon" href="/assets/img/favicon.ico"/>
+
     <link rel="stylesheet" type="text/css" href="/css/webbase.css"/>
-<<<<<<< HEAD
-	<link rel="stylesheet" type="text/css" href="/css/pages-seckillOrder.css"/>
-	<script src="plugins/angularjs/angular.min.js"></script>
-	<script src="js/base.js"></script>
-	<script src="js/service/baseService.js"></script>
-	<script src="js/controller/indexController.js"></script>
-	<script src="js/controller/settingController.js"></script>
-	<script src="plugins/calendar.js"></script>
-	<script src="plugins/WdatePicker.js"></script>
-	<script src="plugins/lang/zh-cn.js"></script>
-	<link rel="stylesheet" href="plugins/skin/WdatePicker.css">
-
-</head>
-
-<body ng-app="pinyougou" ng-controller="settingController"
-	  ng-init="showName();findProvinces();">
-    <!-- 头部栏位 -->
-    <!--页面顶部-->
-<div id="nav-bottom">
-	<!--顶部-->
-	<div class="nav-top">
-		<div class="top">
-			<div class="py-container">
-				<div class="shortcut">
-					<ul class="fl">
-						<li class="f-item">{{loginName}},品优购欢迎您！</li>
-						<a href="http://sso.pinyougou.com/logout?service={{redirectUrl}}"></a>
-					</ul>
-					<ul class="fr">
-						<li class="f-item">我的订单</li>
-						<li class="f-item space"></li>
-						<li class="f-item"><a href="home.html" target="_blank">我的品优购</a></li>
-						<li class="f-item space"></li>
-						<li class="f-item">品优购会员</li>
-						<li class="f-item space"></li>
-						<li class="f-item">企业采购</li>
-						<li class="f-item space"></li>
-						<li class="f-item">关注品优购</li>
-						<li class="f-item space"></li>
-						<li class="f-item" id="service">
-							<span>客户服务</span>
-							<ul class="service">
-								<li><a href="cooperation.html" target="_blank">合作招商</a></li>
-								<li><a href="shoplogin.html" target="_blank">商家后台</a></li>
-								<li><a href="cooperation.html" target="_blank">合作招商</a></li>
-								<li><a href="#">商家后台</a></li>
-							</ul>
-						</li>
-						<li class="f-item space"></li>
-						<li class="f-item">网站导航</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<!--头部-->
-		<div class="header">
-			<div class="py-container">
-				<div class="yui3-g Logo">
-					<div class="yui3-u Left logoArea">
-						<a class="logo-bd" title="品优购" href="JD-index.html" target="_blank"></a>
-					</div>
-					<div class="yui3-u Center searchArea">
-						<div class="search">
-							<form action="" class="sui-form form-inline">
-								<!--searchAutoComplete-->
-								<div class="input-append">
-									<input type="text" id="autocomplete" type="text" class="input-error input-xxlarge" />
-									<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
-								</div>
-							</form>
-						</div>
-						<div class="hotwords">
-							<ul>
-								<li class="f-item">品优购首发</li>
-								<li class="f-item">亿元优惠</li>
-								<li class="f-item">9.9元团购</li>
-								<li class="f-item">每满99减30</li>
-								<li class="f-item">亿元优惠</li>
-								<li class="f-item">9.9元团购</li>
-								<li class="f-item">办公用品</li>
-
-							</ul>
-						</div>
-					</div>
-					<div class="yui3-u Right shopArea">
-						<div class="fr shopcar">
-							<div class="show-shopcar" id="shopcar">
-								<span class="car"></span>
-								<a class="sui-btn btn-default btn-xlarge" href="cart.html" target="_blank">
-									<span>我的购物车</span>
-									<i class="shopnum">0</i>
-								</a>
-								<div class="clearfix shopcarlist" id="shopcarlist" style="display:none">
-									<p>"啊哦，你的购物车还没有商品哦！"</p>
-									<p>"啊哦，你的购物车还没有商品哦！"</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="yui3-g NavList">
-					<div class="yui3-u Left all-sort">
-						<h4>全部商品分类</h4>
-					</div>
-					<div class="yui3-u Center navArea">
-						<ul class="nav">
-							<li class="f-item">服装城</li>
-							<li class="f-item">美妆馆</li>
-							<li class="f-item">品优超市</li>
-							<li class="f-item">全球购</li>
-							<li class="f-item">闪购</li>
-							<li class="f-item">团购</li>
-							<li class="f-item">有趣</li>
-							<li class="f-item"><a href="seckill-index.html" target="_blank">秒杀</a></li>
-						</ul>
-					</div>
-					<div class="yui3-u Right"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-=======
 
     <link rel="stylesheet" type="text/css" href="/css/pages-seckillOrder.css"/>
     <!--导入 js 框架 angularjs -->
@@ -263,7 +140,6 @@
             </div>
         </div>
     </div>
->>>>>>> 4eaae376272e8456a9462dc56e7e97df7a5b4314
 </div>
 
 <script type="text/javascript" src="/js/plugins/jquery/jquery.min.js"></script>
@@ -313,46 +189,6 @@
 </script>
 
 </body>
-<<<<<<< HEAD
-    <!--header-->
-    <div id="account">
-        <div class="py-container">
-            <div class="yui3-g home">
-                <!--左侧列表-->
-                <div class="yui3-u-1-6 list">
-
-                    <div class="person-info">
-                        <div class="person-photo"><img src="img/_/photo.png" alt=""></div>
-                        <div class="person-account">
-                            <span class="name">{{loginName}}</span>
-                            <span class="safe">账户安全</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="list-items">
-                        <dl>
-							<dt><i>·</i> 订单中心</dt>
-							<dd ><a href="home-index.html"   >我的订单</a></dd>
-							<dd><a href="home-order-pay.html" >待付款</a></dd>
-							<dd><a href="home-order-send.html"  >待发货</a></dd>
-							<dd><a href="home-order-receive.html" >待收货</a></dd>
-							<dd><a href="home-order-evaluate.html" >待评价</a></dd>
-						</dl>
-						<dl>
-							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="home-person-collect.html" >我的收藏</a></dd>
-							<dd><a href="home-person-footmark.html" >我的足迹</a></dd>
-						</dl>
-						<dl>
-							<dt><i>·</i> 物流消息</dt>
-						</dl>
-						<dl>
-							<dt><i>·</i> 设置</dt>
-							<dd><a href="home-setting-info.html" class="list-active">个人信息</a></dd>
-							<dd><a href="home-setting-address.html"  >地址管理</a></dd>
-							<dd><a href="home-setting-safe.html" >安全管理</a></dd>
-						</dl>
-=======
 <!--header-->
 <div id="account"
      ng-app="pinyougou"
@@ -369,77 +205,9 @@
                     <div class="person-account">
                         <span class="name">{{loginName}}</span>
                         <span class="safe">账户安全</span>
->>>>>>> 4eaae376272e8456a9462dc56e7e97df7a5b4314
                     </div>
                     <div class="clearfix"></div>
                 </div>
-<<<<<<< HEAD
-                <!--右侧主内容-->
-                <div class="yui3-u-5-6">
-                    <div class="body userInfo">
-                        <ul class="sui-nav nav-tabs nav-large nav-primary ">
-                            <li class="active"><a href="#one" data-toggle="tab">基本资料</a></li>
-                            <li><a href="#two" data-toggle="tab">头像照片</a></li>
-                        </ul>
-                        <div class="tab-content ">
-                            <div id="one" class="tab-pane active">
-                                <form id="form-msg" class="sui-form form-horizontal">
-                                    <div class="control-group">
-                                        <label for="inputName" class="control-label">昵称：</label>
-                                        <div class="controls">
-                                            <input type="text" id="inputName" name="email"
-												   ng-model="user.nickName"
-												   placeholder="昵称">
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label for="inputGender" class="control-label">性别：</label>
-                                        <div class="controls">
-                                            <input type="radio" name="gender" value="1" ng-model="user.sex"><span>男</span>
-                                        </label>
-                                            <input type="radio" name="gender" value="2" ng-model="user.sex"><span>女</span>
-                                        </label>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label">生日：</label>
-                                        <div class="controls">
-                                            <!--<select id="select_year2" rel="1990"></select>年-->
-											<input id="select_year2"  type="text" ng-model="user.birth"/>
-											<img onclick="WdatePicker({el:'select_year2'})"
-												 src="plugins/skin/datePicker.gif" width="16" height="22" align="absmiddle">年
-                                        </div>
-									</div>
-
-
-                                    <div class="control-group">
-                                        <label class="control-label">所在地：</label>
-                                        <div class="controls">
-                                            <div>
-                                                <div class="form-group area">
-                                                    <select ng-model="provinces.provinceId"
-														ng-options="p.id as p.province for p in provincesList"
-															class="form-control">
-														<option value="">=====省=====</option>
-													</select>
-                                                </div>
-                                                <div class="form-group area">
-                                                    <select ng-model="cities.cityId"
-														ng-options="c.id as c.city for c in citiesList"
-															class="form-control">
-														<option value="">=====市=====</option>
-													</select>
-                                                </div>
-                                                <div class="form-group area">
-                                                    <select ng-model="areas.areaId"
-															ng-options="a.id as a.area for a in areasList"
-															class="form-control">
-														<option value="">=====区=====</option>
-													</select>
-                                                </div>
-                                            </div>
-                                        </div>
-=======
                 <div class="list-items">
                     <dl>
                         <dt><i>·</i> 订单中心</dt>
@@ -631,7 +399,6 @@
                                                 </td>
                                             </tr>
                                         </table>
->>>>>>> 4eaae376272e8456a9462dc56e7e97df7a5b4314
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -656,13 +423,6 @@
                                             </span>
                                             </span>
                                     </div>
-<<<<<<< HEAD
-                                    <div class="control-group">
-                                        <label for="sanwei" class="control-label"></label>
-                                        <div class="controls">
-                                            <button type="submit" class="sui-btn btn-primary" ng-click="saveInfo();">立即注册</button>
-                                        </div>
-=======
                                 </div>
                                 {{entity}}
                                 <div class="control-group">
@@ -671,7 +431,6 @@
                                         <button class="btn btn-primary" ng-click="saveOrUpdate()"><i
                                                 class="fa fa-save"></i>保存
                                         </button>
->>>>>>> 4eaae376272e8456a9462dc56e7e97df7a5b4314
                                     </div>
                                 </div>
                             </div>

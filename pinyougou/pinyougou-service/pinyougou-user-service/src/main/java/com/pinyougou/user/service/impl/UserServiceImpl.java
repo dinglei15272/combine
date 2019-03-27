@@ -141,7 +141,7 @@ public class UserServiceImpl implements UserService {
             params.put("phone", phone);
             params.put("signName", signName);
             params.put("templateCode", templateCode);
-            params.put("templateParam", "{'code':'"+ code +"'}");
+            params.put("templateParam", "{'number':'"+ code +"'}");
             // 调用短信接口
             String content = httpClientUtils.sendPost(smsUrl, params);
             System.out.println(content);
@@ -167,39 +167,6 @@ public class UserServiceImpl implements UserService {
             return oldCode != null && oldCode.equals(code);
         }catch (Exception ex){
             throw new RuntimeException(ex);
-        }
-    }
-
-    @Override
-    public void setSafe(User user) {
-        try {
-            User user1 = userMapper.findUserByUserName(user.getUsername());
-            user1.setPassword(DigestUtils.md5Hex(user.getPassword()));
-            user1.setNickName(user.getNickName());
-            userMapper.updateByPrimaryKey(user1);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void updatePhone(String phone,String username) {
-        try{
-            User user1 = userMapper.findUserByUserName(username);
-            user1.setPhone(phone);
-            userMapper.updateByPrimaryKey(user1);
-        }catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public String findPhone(String username) {
-        try{
-            User user = userMapper.findUserByUserName(username);
-            return user.getPhone();
-        }catch (Exception e){
-            throw new RuntimeException(e);
         }
     }
 

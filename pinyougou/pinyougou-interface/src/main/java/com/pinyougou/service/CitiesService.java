@@ -33,11 +33,7 @@ public interface CitiesService {
 	/** 多条件分页查询 */
 	List<Cities> findByPage(Cities cities, int page, int rows);
 
-<<<<<<< HEAD
-    List<Cities> findCitiesByProvinceId(String provinceId);
-=======
 	/**按ID来多查询*/
 	List<Cities> findItemCatByParentId(Long parentId);
 
->>>>>>> 4eaae376272e8456a9462dc56e7e97df7a5b4314
 }
