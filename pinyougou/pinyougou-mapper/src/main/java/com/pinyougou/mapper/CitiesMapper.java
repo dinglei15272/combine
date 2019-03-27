@@ -1,8 +1,11 @@
 package com.pinyougou.mapper;
 
+import com.pinyougou.pojo.Cities;
+import org.apache.ibatis.annotations.Select;
 import tk.mybatis.mapper.common.Mapper;
 
-import com.pinyougou.pojo.Cities;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * CitiesMapper 数据访问接口
@@ -11,6 +14,9 @@ import com.pinyougou.pojo.Cities;
  */
 public interface CitiesMapper extends Mapper<Cities>{
 
+    @Select("SELECT * FROM tb_cities WHERE provinceid = #{parentId}")
+    List<Cities> findItemCatByParentId(Long parentId);
 
-
+    @Select("SELECT * FROM tb_cities WHERE id = #{Id}")
+    Cities selectone(Serializable id);
 }
