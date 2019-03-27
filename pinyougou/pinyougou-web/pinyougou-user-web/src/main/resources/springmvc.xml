@@ -13,6 +13,9 @@
        http://code.alibabatech.com/schema/dubbo
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
+    <!-- 加载属性文件 -->
+    <context:property-placeholder
+            location="classpath:application.properties"/>
 
     <!-- 开启MVC注解驱动 -->
     <mvc:annotation-driven>
