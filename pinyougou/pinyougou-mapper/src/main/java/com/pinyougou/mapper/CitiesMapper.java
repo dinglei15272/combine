@@ -19,4 +19,5 @@ public interface CitiesMapper extends Mapper<Cities>{
 
     @Select("SELECT * FROM tb_cities WHERE id = #{Id}")
     Cities selectone(Serializable id);
+
 }

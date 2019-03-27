@@ -33,7 +33,6 @@ public interface CitiesService {
 	/** 多条件分页查询 */
 	List<Cities> findByPage(Cities cities, int page, int rows);
 
-	/**按ID来多查询*/
-	List<Cities> findItemCatByParentId(Long parentId);
 
-}
+
+	List<Cities> findItemCatByParentId(Long parentId);}
