@@ -1,8 +1,10 @@
 package com.pinyougou.service;
 
 import com.pinyougou.pojo.User;
-import java.util.List;
+
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * UserService 服务接口
  * @date 2019-02-27 10:03:32
@@ -21,6 +23,9 @@ public interface UserService {
 
 	/** 批量删除 */
 	void deleteAll(Serializable[] ids);
+
+	/** 以用户名查询 */
+	User findName(User name);
 
 	/** 根据主键id查询 */
 	User findOne(Serializable id);

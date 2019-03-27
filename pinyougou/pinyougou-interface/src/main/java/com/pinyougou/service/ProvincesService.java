@@ -1,8 +1,10 @@
 package com.pinyougou.service;
 
 import com.pinyougou.pojo.Provinces;
-import java.util.List;
+
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * ProvincesService 服务接口
  * @date 2019-02-27 10:03:32
@@ -31,4 +33,6 @@ public interface ProvincesService {
 	/** 多条件分页查询 */
 	List<Provinces> findByPage(Provinces provinces, int page, int rows);
 
+	/**按ID来多查询*/
+	List<Provinces> findItemCatByParentId(Long parentId);
 }
