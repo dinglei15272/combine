@@ -16,59 +16,46 @@ public class ProvincesServiceImpl implements ProvincesService {
 
     @Autowired
     private ProvincesMapper provincesMapper;
-<<<<<<< HEAD
     /**
      * 添加方法
      *
      * @param provinces
      */
-=======
->>>>>>> 4eaae376272e8456a9462dc56e7e97df7a5b4314
     @Override
     public void save(Provinces provinces) {
 
     }
 
-<<<<<<< HEAD
     /**
      * 修改方法
      *
      * @param provinces
      */
-=======
->>>>>>> 4eaae376272e8456a9462dc56e7e97df7a5b4314
     @Override
     public void update(Provinces provinces) {
 
     }
 
-<<<<<<< HEAD
     /**
      * 根据主键id删除
      *
      * @param id
      */
-=======
->>>>>>> 4eaae376272e8456a9462dc56e7e97df7a5b4314
     @Override
     public void delete(Serializable id) {
 
     }
 
-<<<<<<< HEAD
     /**
      * 批量删除
      *
      * @param ids
      */
-=======
->>>>>>> 4eaae376272e8456a9462dc56e7e97df7a5b4314
     @Override
     public void deleteAll(Serializable[] ids) {
 
     }
 
-<<<<<<< HEAD
     /**
      * 根据主键id查询
      *
@@ -100,33 +87,8 @@ public class ProvincesServiceImpl implements ProvincesService {
      * @param page
      * @param rows
      */
-=======
-    @Override
-    public Provinces findOne(Serializable id) {
-        try {
-            return provincesMapper.selectone(id);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    @Override
-    public List<Provinces> findAll() {
-        return provincesMapper.selectAll();
-    }
-
->>>>>>> 4eaae376272e8456a9462dc56e7e97df7a5b4314
     @Override
     public List<Provinces> findByPage(Provinces provinces, int page, int rows) {
         return null;
     }
-<<<<<<< HEAD
-=======
-
-    @Override
-    public List<Provinces> findItemCatByParentId(Long parentId) {
-        return null;
-    }
->>>>>>> 4eaae376272e8456a9462dc56e7e97df7a5b4314
 }

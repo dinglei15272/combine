@@ -15,8 +15,9 @@ import java.util.List;
 public interface CitiesMapper extends Mapper<Cities>{
 
     @Select("SELECT * FROM tb_cities WHERE provinceid = #{parentId}")
-    List<Cities> findItemCatByParentId(Long parentId);
+    List<Cities> findCitiesByProvinceId(String parentId);
 
     @Select("SELECT * FROM tb_cities WHERE id = #{Id}")
     Cities selectone(Serializable id);
+
 }
