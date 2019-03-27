@@ -1,5 +1,6 @@
 package com.pinyougou.mapper;
 
+import org.apache.ibatis.annotations.Select;
 import tk.mybatis.mapper.common.Mapper;
 
 import com.pinyougou.pojo.User;
@@ -11,6 +12,6 @@ import com.pinyougou.pojo.User;
  */
 public interface UserMapper extends Mapper<User>{
 
-
-
+    @Select("SELECT * from tb_user where username = #{username}")
+    User findUserByUserName(String username);
 }

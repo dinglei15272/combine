@@ -47,6 +47,7 @@ public class UserController {
         }
         return false;
     }
+
     @PostMapping("/setSafe")
     public boolean setSafe(@RequestBody User user, HttpServletRequest request) {
         try{

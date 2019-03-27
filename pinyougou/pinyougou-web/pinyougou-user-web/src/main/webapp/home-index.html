@@ -220,13 +220,16 @@ $(function(){
                                     <label data-toggle="checkbox" class="checkbox-pretty ">
                                            <input type="checkbox" checked="checked"><span>2017-02-11 11:59　订单编号：7867473872181848  店铺：哇哈哈 <a>和我联系</a></span>
                                      </label>
+                                           <input type="checkbox" ng-click="" >
+										<span>{{o.updateTime}}　订单编号：{{o.orderId}} 店铺：{{o.sellerId}} <a>和我联系</a></span>
+									</label>
 									  <a class="sui-btn btn-info share-btn">分享</a>
                                 </div>
                                 <table class="sui-table table-bordered order-datatable">
                                     <tbody>
                                         <tr>
                                             <td width="35%">
-                                                <div class="typographic"><img src="img/goods.png" />
+                                                    <a href="#" class="block-text">包邮 {{o.title}}</a>
                                                     <a href="#" class="block-text">包邮 正品玛姬儿压缩面膜无纺布纸膜100粒 送泡瓶面膜刷喷瓶 新款</a>
                                                     <span class="guige">规格：温泉喷雾150ml</span>
                                                 </div>

@@ -34,7 +34,5 @@ public interface CitiesService {
 	List<Cities> findByPage(Cities cities, int page, int rows);
 
 
-    List<Cities> findCitiesByProvinceId(String provinceId);
 
-
-}
+	List<Cities> findItemCatByParentId(Long parentId);}

@@ -69,6 +69,16 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    /**
+     * 以用户名查询
+     *
+     * @param name
+     */
+    @Override
+    public User findName(User name) {
+        return null;
+    }
+
     @Override
     public User findOne(Serializable id) {
         return null;
@@ -161,5 +171,6 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException(e);
         }
     }
+
 
 }

@@ -16,41 +16,23 @@ public class ProvincesServiceImpl implements ProvincesService {
 
     @Autowired
     private ProvincesMapper provincesMapper;
-    /**
-     * 添加方法
-     *
-     * @param provinces
-     */
+
     @Override
     public void save(Provinces provinces) {
 
     }
 
-    /**
-     * 修改方法
-     *
-     * @param provinces
-     */
     @Override
     public void update(Provinces provinces) {
 
     }
 
-    /**
-     * 根据主键id删除
-     *
-     * @param id
-     */
+
     @Override
     public void delete(Serializable id) {
 
     }
 
-    /**
-     * 批量删除
-     *
-     * @param ids
-     */
     @Override
     public void deleteAll(Serializable[] ids) {
 
@@ -63,7 +45,11 @@ public class ProvincesServiceImpl implements ProvincesService {
      */
     @Override
     public Provinces findOne(Serializable id) {
-        return null;
+        try {
+            return provincesMapper.selectone(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -71,13 +57,7 @@ public class ProvincesServiceImpl implements ProvincesService {
      */
     @Override
     public List<Provinces> findAll() {
-        try {
-
-            List<Provinces> provinces = provincesMapper.selectAll();
-            return provinces;
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
+        return provincesMapper.selectAll();
     }
 
     /**
@@ -91,4 +71,16 @@ public class ProvincesServiceImpl implements ProvincesService {
     public List<Provinces> findByPage(Provinces provinces, int page, int rows) {
         return null;
     }
+
+    /**
+     * 按ID来多查询
+     *
+     * @param parentId
+     */
+    @Override
+    public List<Provinces> findItemCatByParentId(Long parentId) {
+        return null;
+    }
+
+
 }
