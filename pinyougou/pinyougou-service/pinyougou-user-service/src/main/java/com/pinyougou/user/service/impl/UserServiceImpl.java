@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import java.io.Serializable;
 import java.util.*;
@@ -54,9 +55,26 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    //更新用户数据
     @Override
     public void update(User user) {
-
+        try {
+            //定义一个模板
+            Example example = new Example(User.class);
+            //创建条件对象
+            Example.Criteria criteria = example.createCriteria();
+            //添加条件
+            criteria.andEqualTo("username",user.getUsername());
+            //加入条件查询开始查询
+//            User userid= (User) userMapper.selectByExample(example);
+            //修改ID完成添加
+//            user.setId(userid.getId());
+            //完成修改
+//            userMapper.updateByPrimaryKeySelective(user);
+            userMapper.updateByExampleSelective(user,example);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -69,14 +87,27 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    /**
-     * 以用户名查询
-     *
-     * @param name
-     */
+    /** 以用户名查询 */
     @Override
-    public User findName(User name) {
-        return null;
+    public User findName(User user) {
+        try {
+            //定义一个模板
+            Example example = new Example(User.class);
+            //创建条件对象
+            Example.Criteria criteria = example.createCriteria();
+            //添加条件
+            criteria.andEqualTo("username",user.getUsername());
+            //加入条件查询开始查询
+//            User userid= (User) userMapper.selectByExample(example);
+            //修改ID完成添加
+//            user.setId(userid.getId());
+            //完成修改
+//            userMapper.updateByPrimaryKeySelective(user);
+            List<User> users =userMapper.selectByExample(example);
+            return users.get(0);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
