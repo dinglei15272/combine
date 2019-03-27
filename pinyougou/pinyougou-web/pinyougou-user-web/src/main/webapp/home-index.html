@@ -208,7 +208,7 @@ $(function(){
 								<!--order1-->
                                 <div class="choose-title">
                                     <label data-toggle="checkbox" class="checkbox-pretty ">
-                                           <input type="checkbox" ng-click="updateSelection($event, o.id);" >
+                                           <input type="checkbox" ng-click="" >
 										<span>{{o.updateTime}}　订单编号：{{o.orderId}} 店铺：{{o.sellerId}} <a>和我联系</a></span>
 									</label>
 									  <a class="sui-btn btn-info share-btn">分享</a>
@@ -217,7 +217,7 @@ $(function(){
                                     <tbody>
                                         <tr>
                                             <td width="35%">
-                                                <div class="typographic"><img src="img/goods.png" />
+                                                <div class="typographic"><img src="{{o.picPath}}" />
                                                     <a href="#" class="block-text">包邮 {{o.title}}</a>
                                                     <span class="guige">规格：温泉喷雾150ml</span>
                                                 </div>
