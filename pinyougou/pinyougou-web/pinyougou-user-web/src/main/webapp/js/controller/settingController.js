@@ -1,7 +1,6 @@
 app.controller("settingController",function ($scope,$controller, $timeout, baseService) {
 
 
-    $controller('indexController',{$scope:$scope});
     // 定义json对象
     $scope.user = {};
 
@@ -137,4 +136,105 @@ app.controller("settingController",function ($scope,$controller, $timeout, baseS
            $scope.phone = response.data;
         });
     };
+	
+	
+	   $scope.add={};
+    // 获取登录用户名
+    $scope.showName = function () {
+        baseService.sendGet("/user/showName").then(function (response) {
+            // 获取响应数据
+            $scope.loginName = response.data.loginName;
+        });
+    };
+
+
+        /** 根据登录用户获取地址 */
+        $scope.findAddressByUser = function(){
+            baseService.sendGet("/setting/findAddressByUser")
+                .then(function(response){
+                    $scope.addressList = response.data;
+                });
+        };
+
+
+    $scope.findByTableId = function(table,tableId, name){
+        baseService.sendGet("/setting/"+table+"?tableId=" + tableId).then(function(response){
+            $scope[name] = response.data;
+        });
+    };
+
+
+    $scope.$watch('add.provinceId', function(newValue, oldValue){
+        if (newValue){
+            var table = "city";
+            /** 根据选择的值查询二级分类 */
+            $scope.findByTableId(table,newValue, "cityList");
+        }else{
+            $scope.cityList = [];
+        }
+    });
+
+
+ $scope.$watch('add.cityId', function(newValue, oldValue){
+        if (newValue){
+            var table = "area";
+            /** 根据选择的值查询二级分类 */
+            $scope.findByTableId(table,newValue, "areaList");
+        }else{
+            $scope.areaList = [];
+        }
+    });
+
+
+
+    /** 保存商品 */
+    $scope.saveAddress = function(){
+        // 发送异步请求
+        baseService.sendPost("/setting/save", $scope.add).then(
+            function(response){
+                if(response.data){
+                    alert("保存成功！");
+                    /** 清空表单 */
+                    $scope.add = {};
+
+                    $scope.findAddressByUser();
+                }else{
+                    alert("保存失败！");
+                }
+            }
+        );
+    };
+
+   $scope.delete=function (id) {
+       baseService.sendGet("/setting/delete?id="+id).then(function (response) {
+           if(response.data){
+               alert("ok");
+               $scope.findAddressByUser();
+           }else {
+               alert("no");
+           }
+       });
+   };
+
+   var DefaultId = 0;
+    $scope.saveDefault=function (id,st) {
+        if(st==1){
+            DefaultId = id;
+        }else {
+            baseService.sendGet("/setting/saveDefault?id="+id+"&st="+st).then(function (response) {
+                if(response.data){
+                    $scope.saveDefault0();
+                    $scope.findAddressByUser();
+                }else {
+                    alert("no");
+                }
+            })
+        }
+    };
+
+    $scope.saveDefault0=function () {
+        baseService.sendGet("/setting/saveDefault?id="+DefaultId+"&st=1").then(function (response) {
+            $scope.findAddressByUser();
+        })
+    }
 });

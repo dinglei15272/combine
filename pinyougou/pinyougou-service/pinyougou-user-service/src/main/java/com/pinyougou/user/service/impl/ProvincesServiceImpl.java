@@ -55,10 +55,7 @@ public class ProvincesServiceImpl implements ProvincesService {
     /**
      * 查询全部
      */
-    @Override
-    public List<Provinces> findAll() {
-        return provincesMapper.selectAll();
-    }
+
 
     /**
      * 多条件分页查询
@@ -80,6 +77,15 @@ public class ProvincesServiceImpl implements ProvincesService {
     @Override
     public List<Provinces> findItemCatByParentId(Long parentId) {
         return null;
+    }
+	
+	@Override
+    public List<Provinces> findAll() {
+        try {
+            return provincesMapper.selectAll();
+        }catch (Exception ex){
+            throw new RuntimeException(ex);
+        }
     }
 
 

@@ -6,6 +6,7 @@ import com.pinyougou.pojo.Cities;
 import com.pinyougou.service.CitiesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import java.io.Serializable;
 import java.util.List;
@@ -64,6 +65,14 @@ public class CitiesServiceImpl implements CitiesService {
         }catch (Exception ex){
             throw new RuntimeException(ex);
         }
+    }
+	
+	@Override
+    public List<Cities> findByProvinceId(Long provinceId) {
+        Example example =  new Example(Cities.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("provinceId", provinceId);
+        return citiesMapper.selectByExample(example);
     }
 
 }
