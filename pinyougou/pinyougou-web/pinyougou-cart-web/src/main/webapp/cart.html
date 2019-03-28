@@ -10,11 +10,13 @@
 	<script src="/js/service/baseService.js"></script>
 	<script src="/js/controller/baseController.js"></script>
 	<script src="/js/controller/cartController.js"></script>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
 
 </head>
 <body ng-app="pinyougou"
 	  ng-controller="cartController"
-	  ng-init="loadUsername();findCart();">
+	  ng-init="loadUsername();findCart();createArr()">
 	<!--head-->
 	<div class="top">
 		<div class="py-container">
@@ -65,11 +67,11 @@
 			</div>
 		</div>
 		<!--All goods-->
-		<div class="allgoods">
-			<h4>全部商品<span>11</span></h4>
+
 			<div class="cart-main">
 				<div class="yui3-g cart-th">
-					<div class="yui3-u-1-4"><input type="checkbox" name="" value="" /> 全部</div>
+					<div class="yui3-u-1-4"><input type="checkbox" name="" value=""
+					 ng-click="selectAll($event)" ng-checked="cAll"/> 全部</div>
 					<div class="yui3-u-1-4">商品</div>
 					<div class="yui3-u-1-8">单价（元）</div>
 					<div class="yui3-u-1-8">数量</div>
@@ -79,14 +81,20 @@
 
 				<div class="cart-item-list" ng-repeat="cart in carts">
 					<div class="cart-shop">
-						<input type="checkbox" name="" value="" />
+						<input type="checkbox" name="" value="" class="contentCheckbox"
+							   ng-click="selectCart($index,$event);"
+							   ng-checked = "sellerCheckbox[$index]"
+						/>
 						<span class="shopname self">{{cart.sellerName}}</span>
 					</div>
 					<div class="cart-body">
 						<div class="cart-list" ng-repeat="orderItem in cart.orderItems">
 							<ul class="goods-list yui3-g">
 								<li class="yui3-u-1-24">
-									<input type="checkbox" name="" value="" />
+									<input type="checkbox" name="" value="" class="contentCheckbox"
+										   ng-click="selectOrderItem($parent.$index,$index,$event)"
+										  ng-checked="itemCheckbox[$parent.$index][$index]"
+									/>
 								</li>
 								<li class="yui3-u-11-24">
 									<div class="good-item">
@@ -101,7 +109,8 @@
 									   ng-click="addCart(orderItem.itemId, -1)"
 									   class="increment mins">-</a>
 									<input type="text"
-										   ng-model="orderItem.num" class="itxt" />
+										   ng-model="orderItem.num" class="itxt"
+									/>
 									<a href="javascript:void(0)"
 									   ng-click="addCart(orderItem.itemId, 1)"
 									   class="increment plus">+</a>
@@ -119,7 +128,9 @@
 			</div>
 			<div class="cart-tool">
 				<div class="select-all">
-					<input type="checkbox" name="" value="" />
+					<input type="checkbox" name="" value=""   ng-click="selectAll($event)" ng-checked="cAll"
+						   ng-checked = "sellerCheckbox[$index]"
+					/>
 					<span>全选</span>
 				</div>
 				<div class="option">
@@ -135,14 +146,14 @@
 						<span><em>已节省：</em><i>-¥20.00</i></span>
 					</div>
 					<div class="sumbtn">
-						<a class="sum-btn" href="/order/getOrderInfo.html" target="_blank">结算</a>
+						<a class="sum-btn" href="javascript:;" ng-click="topay()" target="_blank">结算</a>
 					</div>
 				</div>
 			</div>
 			<div class="clearfix"></div>
 			<div class="deled">
 				<span>已删除商品，您可以重新购买或加关注：</span>
-				<div class="cart-list del">
+				<!--<div class="cart-list del">
 					<ul class="goods-list yui3-g">
 						<li class="yui3-u-1-2">
 							<div class="good-item">
@@ -158,7 +169,7 @@
 							<a href="#none">移到我的关注</a>
 						</li>
 					</ul>
-				</div>
+				</div>-->
 			</div>
 			<div class="liked">
 				<ul class="sui-nav nav-tabs">
