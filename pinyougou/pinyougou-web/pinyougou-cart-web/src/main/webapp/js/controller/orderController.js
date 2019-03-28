@@ -47,6 +47,7 @@ app.controller('orderController', function ($scope, $controller, $interval,$loca
         baseService.sendPost("/order/saveOrder", $scope.order).then(function(response){
             // 获取响应数据
             if (response.data){
+
                 // 判断付款方式
                 if ($scope.order.paymentType == 1){
                     // 微信支付，跳转到支付页面
@@ -60,6 +61,8 @@ app.controller('orderController', function ($scope, $controller, $interval,$loca
             }
         });
     };
+    
+
 
     // 生成微信支付二维码
     $scope.genPayCode = function () {

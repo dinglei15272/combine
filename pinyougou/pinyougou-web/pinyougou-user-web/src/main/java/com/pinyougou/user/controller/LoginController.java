@@ -47,6 +47,9 @@ public class LoginController {
         return data;
     }
 
+    /**
+     * 获取登录用户名
+     */
     @GetMapping("/user/showName")
     public Map<String, Object> showName() {
         SecurityContext context = SecurityContextHolder.getContext();
