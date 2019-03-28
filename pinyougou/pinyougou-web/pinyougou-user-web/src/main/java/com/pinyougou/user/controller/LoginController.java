@@ -29,7 +29,7 @@ public class LoginController {
      * 获取登录用户名和头像以及其他信息
      */
     @GetMapping("/user/showUser")
-    public Map<String, Object> showName() {
+    public Map<String, Object> showUser() {
         SecurityContext context = SecurityContextHolder.getContext();
         String loginName = context.getAuthentication().getName();
         Map<String, Object> data = new HashMap<>();
@@ -46,4 +46,15 @@ public class LoginController {
         data.put("loginName", loginName);
         return data;
     }
+
+    @GetMapping("/user/showName")
+    public Map<String, Object> showName() {
+        SecurityContext context = SecurityContextHolder.getContext();
+        String loginName = context.getAuthentication().getName();
+        Map<String, Object> data = new HashMap<>();
+        data.put("loginName", loginName);
+        return data;
+    }
+
+
 }
