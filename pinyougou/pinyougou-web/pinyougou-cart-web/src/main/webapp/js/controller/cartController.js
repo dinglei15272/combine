@@ -125,6 +125,7 @@ app.controller('cartController', function ($scope, $controller, baseService) {
           alert("请先选择商品")
       }else{
           location.href = "/order/getOrderInfo.html";
+		  
       }
 
 
