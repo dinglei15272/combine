@@ -53,4 +53,6 @@ public interface AreasService {
 	 * 按ID来多查询
 	 */
 	List<Areas> findItemCatByParentId(Long parentId);
+	
+	List<Areas> findByCityId(Long tableId);
 }

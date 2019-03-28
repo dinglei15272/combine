@@ -81,6 +81,15 @@ public class ProvincesServiceImpl implements ProvincesService {
     public List<Provinces> findItemCatByParentId(Long parentId) {
         return null;
     }
+	
+	@Override
+    public List<Provinces> findAll() {
+        try {
+            return provincesMapper.selectAll();
+        }catch (Exception ex){
+            throw new RuntimeException(ex);
+        }
+    }
 
 
 }

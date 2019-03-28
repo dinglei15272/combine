@@ -59,4 +59,13 @@ public class AreasServiceImpl implements AreasService {
             throw new RuntimeException(ex);
         }
     }
+	
+	
+	@Override
+    public List<Areas> findByCityId(Long cityId) {
+        Example example =  new Example(Cities.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("cityId", cityId);
+        return areasMapper.selectByExample(example);
+    }
 }

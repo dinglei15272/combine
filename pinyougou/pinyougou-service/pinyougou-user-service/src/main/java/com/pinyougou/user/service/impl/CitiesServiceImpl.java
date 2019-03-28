@@ -65,5 +65,13 @@ public class CitiesServiceImpl implements CitiesService {
             throw new RuntimeException(ex);
         }
     }
+	
+	@Override
+    public List<Cities> findByProvinceId(Long provinceId) {
+        Example example =  new Example(Cities.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("provinceId", provinceId);
+        return citiesMapper.selectByExample(example);
+    }
 
 }

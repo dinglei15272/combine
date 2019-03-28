@@ -35,4 +35,8 @@ public interface CitiesService {
 
 
 
-	List<Cities> findItemCatByParentId(Long parentId);}
+	List<Cities> findItemCatByParentId(Long parentId);
+	
+	List<Cities> findByProvinceId(Long provinceId);
+	
+	}
