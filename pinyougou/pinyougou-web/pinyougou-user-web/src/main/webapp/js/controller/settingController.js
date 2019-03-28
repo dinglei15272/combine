@@ -152,6 +152,7 @@ app.controller("settingController",function ($scope,$controller, $timeout, baseS
         $scope.findAddressByUser = function(){
             baseService.sendGet("/setting/findAddressByUser")
                 .then(function(response){
+                    id7=0;
                     $scope.addressList = response.data;
                 });
         };
@@ -185,17 +186,18 @@ app.controller("settingController",function ($scope,$controller, $timeout, baseS
         }
     });
 
-
+  var id7 = 0;
 
     /** 保存商品 */
     $scope.saveAddress = function(){
         // 发送异步请求
-        baseService.sendPost("/setting/save", $scope.add).then(
+        baseService.sendPost("/setting/save?id="+id7, $scope.add).then(
             function(response){
                 if(response.data){
                     alert("保存成功！");
                     /** 清空表单 */
                     $scope.add = {};
+
 
                     $scope.findAddressByUser();
                 }else{
@@ -236,5 +238,33 @@ app.controller("settingController",function ($scope,$controller, $timeout, baseS
         baseService.sendGet("/setting/saveDefault?id="+DefaultId+"&st=1").then(function (response) {
             $scope.findAddressByUser();
         })
+    }
+
+
+
+    $scope.saveAlias=function (re) {
+        $scope.add.alias = re;
+    };
+
+    $scope.findAddressById=function (re) {
+        baseService.sendGet("/setting/findAddressById?id="+re).then(function (response){
+            if(response.data){
+                $scope.add.contact = response.data.Address.contact;
+                $scope.add.provinceId = response.data.Address.provinceId;
+                $scope.add.mobile = response.data.Address.mobile;
+                $scope.add.alias = response.data.Address.alias;
+                $scope.add.cityId = response.data.Address.cityId;
+                $scope.add.areaId = response.data.Address.areaId ;
+                $scope.add.address = response.data.Address.address ;
+                id7 = response.data.Address.id;
+
+            }else {
+                alert("no");
+            }
+        });
+    }
+
+    $scope.clean=function () {
+        $scope.add={};
     }
 });

@@ -101,4 +101,19 @@ public class AddressServiceImpl implements AddressService {
             throw new RuntimeException(ex);
         }
     }
+
+    @Override
+    public Address findAddressById(Long id) {
+        Example example = new Example(Address.class);
+        // 创建条件对象
+        Example.Criteria criteria = example.createCriteria();
+        // user_id = 'itcast'
+        criteria.andEqualTo("id",id);
+        // 排序  ORDER BY is_default DESC
+        example.orderBy("isDefault").desc();
+
+        // 条件查询
+        List<Address> list =  addressMapper.selectByExample(example);
+        return list.get(0);
+    }
 }
