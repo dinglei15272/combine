@@ -5,10 +5,7 @@ import com.pinyougou.pojo.Address;
 import com.pinyougou.pojo.Areas;
 import com.pinyougou.pojo.Cities;
 import com.pinyougou.pojo.Provinces;
-import com.pinyougou.service.AddressService;
-import com.pinyougou.service.AreasService;
-import com.pinyougou.service.CitiesService;
-import com.pinyougou.service.ProvincesService;
+import com.pinyougou.service.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/setting")
-public class settingController {
+public class SettingController {
 
     @Reference(timeout = 10000)
     private AddressService addressService;
@@ -42,11 +39,11 @@ public class settingController {
     }
 
     /**
-     * »ñÈ¡µÇÂ¼ÓÃ»§µÄµØÖ·ÁÐ±í
+     * ï¿½ï¿½È¡ï¿½ï¿½Â¼ï¿½Ã»ï¿½ï¿½Äµï¿½Ö·ï¿½Ð±ï¿½
      */
     @GetMapping("/findAddressByUser")
     public List<Address> findAddressByUser(HttpServletRequest request) {
-        // »ñÈ¡µÇÂ¼ÓÃ»§Ãû
+        // ï¿½ï¿½È¡ï¿½ï¿½Â¼ï¿½Ã»ï¿½ï¿½ï¿½
         String userId = request.getRemoteUser();
         return addressService.findAddressByUser(userId);
     }

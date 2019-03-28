@@ -28,6 +28,20 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public void save(Address address) {
 
+        try {
+
+            if((address.getId())!=null){
+                Example example = new Example(Address.class);
+                Example.Criteria criteria = example.createCriteria();
+                criteria.andEqualTo("id", address.getId());
+                addressMapper.updateByExampleSelective(address,example);
+            }else {
+                address.setIsDefault("0");
+                addressMapper.insertSelective(address);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -37,7 +51,15 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public void delete(Serializable id) {
-
+        try {
+            Example example = new Example(Address.class);
+            Example.Criteria criteria = example.createCriteria();
+            // user_id = 'itcast'
+            criteria.andEqualTo("id", id);
+            addressMapper.deleteByExample(example);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

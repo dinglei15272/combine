@@ -3,9 +3,11 @@ package com.pinyougou.user.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.pinyougou.mapper.AreasMapper;
 import com.pinyougou.pojo.Areas;
+import com.pinyougou.pojo.Cities;
 import com.pinyougou.service.AreasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import java.io.Serializable;
 import java.util.List;

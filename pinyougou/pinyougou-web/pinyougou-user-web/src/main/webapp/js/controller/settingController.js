@@ -1,7 +1,6 @@
 app.controller("settingController",function ($scope,$controller, $timeout, baseService) {
 
 
-    $controller('indexController',{$scope:$scope});
     // 定义json对象
     $scope.user = {};
 

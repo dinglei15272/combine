@@ -55,10 +55,7 @@ public class ProvincesServiceImpl implements ProvincesService {
     /**
      * 查询全部
      */
-    @Override
-    public List<Provinces> findAll() {
-        return provincesMapper.selectAll();
-    }
+
 
     /**
      * 多条件分页查询
