@@ -10,7 +10,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/setting")
@@ -38,12 +40,10 @@ public class SettingController {
             return userService.findPhone(username);
     }
 
-    /**
-     * ��ȡ��¼�û��ĵ�ַ�б�
-     */
+
     @GetMapping("/findAddressByUser")
     public List<Address> findAddressByUser(HttpServletRequest request) {
-        // ��ȡ��¼�û���
+
         String userId = request.getRemoteUser();
         return addressService.findAddressByUser(userId);
     }
@@ -65,10 +65,13 @@ public class SettingController {
     }
 
     @PostMapping("/save")
-    public boolean save(@RequestBody Address address) {
+    public boolean save(@RequestBody Address address,Long id) {
         try {
             String addressId = SecurityContextHolder.getContext().getAuthentication().getName();
             address.setUserId(addressId);
+            if(id!=0){
+            address.setId(id);
+            }
             addressService.save(address);
             return true;
         } catch (Exception ex) {
@@ -106,6 +109,14 @@ public class SettingController {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @GetMapping("/findAddressById")
+    public Map<String,Object> findAddressById(Long id){
+        Map<String,Object> map = new HashMap<>();
+        Address address = addressService.findAddressById(id);
+         map.put("Address",address);
+         return map;
     }
 }
 

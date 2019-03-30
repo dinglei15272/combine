@@ -4,6 +4,8 @@ import com.pinyougou.common.pojo.PageResult;
 import com.pinyougou.pojo.Seller;
 import java.util.List;
 import java.io.Serializable;
+import java.util.Map;
+
 /**
  * SellerService 服务接口
  * @date 2019-02-27 10:03:32
@@ -34,4 +36,6 @@ public interface SellerService {
 
 	/** 修改商家的审核状态 */
 	void updateStatus(String sellerId, String status);
+
+
 }
