@@ -56,7 +56,8 @@ public class UploadController {
                     FilenameUtils.getExtension(filename), null);
 
             // 5. 拼接图片访问的URL: http://192.168.12.131 / group1 / M00/00/00/xxx.jpg
-            StringBuilder url = new StringBuilder(fileServerUrl);
+            String urltou ="tx.pinyougou.com";
+            StringBuilder url = new StringBuilder(urltou);
             for (String str : arr){
                 url.append("/" + str);
             }
